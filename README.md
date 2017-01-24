@@ -1,2 +1,2 @@
 # mailer
-Simple Node.js api to send transactional emails using Sendgrid.
+Light Node.js server with APIs to send transactional emails using Sendgrid.
