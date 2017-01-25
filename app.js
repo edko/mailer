@@ -81,35 +81,14 @@ router.post('/send', function(req, res){
 	sg.API(request, function(error, response) {
 	  if (error) {
 	    console.log('Error response received');
+	  } else {
+	  	res.json({ message: 'success'});
 	  }
 	  console.log(response.statusCode);
 	  console.log(response.body);
 	  console.log(response.headers);
 	});
 
-	// console.log(req.body.recipient_email);
-	// console.log(req.body.email_subject);
-	
-	// from_email = new helper.Email("edisonko@gmail.com");
-	// to_email = new helper.Email(req.body.recipient_email);
-	// subject = req.body.email_subject;
-	// content = new helper.Content("text/plain", "You are confirmed to play at ThursBball on ...");
-	// mail = new helper.Mail(from_email, subject, to_email, content);
-
-	// var sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
-	// var request = sg.emptyRequest({
-	// 	method: 'POST',
-	// 	path: '/v3/mail/send',
-	// 	body: mail.toJSON()
-	// });
-
-	// sg.API(request, function(error, response) {
-	// 	console.log(response.statusCode);
-	// 	console.log(response.body);
-	// 	console.log(response.headers);
-	// });
-
-	// res.json({ message: 'success'});
 });
 
 
