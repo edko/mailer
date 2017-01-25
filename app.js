@@ -74,7 +74,7 @@ router.post('/send', function(req, res){
 	    from: {
 	      email: 'thursbballers@gmail.com',
 	    },
-	    subject: 'ThursBball Confirmation for' + date,
+	    subject: 'ThursBball Confirmation for' + req.body.date,
 	    template_id: "a37d3b93-d1c7-47ff-b16e-6ef4e7926d6d",
 	  },
 	});
