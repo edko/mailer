@@ -41,7 +41,7 @@ var router = express.Router(); // instance of Express Router
 router.use(function(req, res, next){
 	console.log('please wait...');
 	res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
 	next();
 });
