@@ -41,6 +41,8 @@ var router = express.Router(); // instance of Express Router
 router.use(function(req, res, next){
 	console.log('something is happening, please wait');
 	res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+	// Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
 	next();
 });
 
