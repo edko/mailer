@@ -39,11 +39,9 @@ var port =  process.env.PORT || 8080; // set our port
 var router = express.Router(); // instance of Express Router
 
 router.use(function(req, res, next){
-	console.log('something is happening, please wait');
-	res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-	// Request methods you wish to allow
+	console.log('please wait...');
+	res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
-    // Request headers you wish to allow
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
 	next();
 });
@@ -74,7 +72,7 @@ router.post('/send', function(req, res){
 	    from: {
 	      email: 'thursbballers@gmail.com',
 	    },
-	    subject: 'ThursBball Confirmation for' + req.body.date,
+	    subject: 'ThursBball Confirmation for ' + req.body.date,
 	    template_id: "a37d3b93-d1c7-47ff-b16e-6ef4e7926d6d",
 	  },
 	});
