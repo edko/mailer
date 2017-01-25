@@ -23,7 +23,7 @@ admin.initializeApp({
 		"client_x509_cert_url": process.env.CLIENT_X509_CERT_URL
   	}
   	),
- 	databaseURL: "https://thursbballdev.firebaseio.com"
+ 	databaseURL: process.env.DATABASEURL
 });
 
 var db = admin.database();
@@ -65,7 +65,8 @@ router.post('/send', function(req, res){
 	          },
 	        ],
 	        substitutions: {
-			    ":firstname": req.body.firstname
+			    ":firstname": req.body.firstname,
+			    ":date": req.body.date
       		},
 	      },
 	    ],
@@ -73,7 +74,7 @@ router.post('/send', function(req, res){
 	    from: {
 	      email: 'thursbballers@gmail.com',
 	    },
-	    subject: 'ThursBball Confirmation for 1/26/2017',
+	    subject: 'ThursBball Confirmation for' + date,
 	    template_id: "a37d3b93-d1c7-47ff-b16e-6ef4e7926d6d",
 	  },
 	});
