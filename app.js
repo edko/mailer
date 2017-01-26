@@ -68,7 +68,7 @@ router.post('/send', function(req, res){
       		},
 	      },
 	    ],
-		reply_to: {
+		from: {
 			email: "thursbballers@gmail.com", 
 			name: "ThursBball"
 		}, 
