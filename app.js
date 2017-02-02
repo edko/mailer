@@ -50,14 +50,12 @@ router.post('/send', function(req, res){
 	// send confirmation to user when they are added to the roster for that night
 	// required fields:  bball_date, email, firstname
 	
-	var template_id = function(){
-		if(req.body.type == 'add'){
-			return "a37d3b93-d1c7-47ff-b16e-6ef4e7926d6d";
-		} else {
-			return "0bc29d35-d176-43a2-ae08-fa28aeb440e5";
-		}
-	}
-	
+	var template_id; 
+	if(req.body.type == 'add'){
+		template_id = "a37d3b93-d1c7-47ff-b16e-6ef4e7926d6d";
+	} else {
+		template_id = "0bc29d35-d176-43a2-ae08-fa28aeb440e5";
+	}	
 	var sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
 	var request = sg.emptyRequest({
 	  method: 'POST',
