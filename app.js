@@ -49,7 +49,15 @@ router.use(function(req, res, next){
 router.post('/send', function(req, res){
 	// send confirmation to user when they are added to the roster for that night
 	// required fields:  bball_date, email, firstname
-
+	
+	var template_id = function(){
+		if(req.body.type == 'add'){
+			return "a37d3b93-d1c7-47ff-b16e-6ef4e7926d6d";
+		} else {
+			return "0bc29d35-d176-43a2-ae08-fa28aeb440e5";
+		}
+	}
+	
 	var sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
 	var request = sg.emptyRequest({
 	  method: 'POST',
@@ -73,14 +81,8 @@ router.post('/send', function(req, res){
 			name: "ThursBball"
 		}, 
 	    subject: 'ThursBball Confirmation for ' + req.body.date,
-	    template_id: function(){
-	    				if(req.body.type == 'add') {
-	    					return "a37d3b93-d1c7-47ff-b16e-6ef4e7926d6d";
-	    				} else if (req.body.type == 'remove') {
-	    					return "0bc29d35-d176-43a2-ae08-fa28aeb440e5";
-	    				}
-	  				}
-	  	}
+	    template_id: template_id
+	  }
 	});
 
 	//With callback
