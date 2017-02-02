@@ -51,11 +51,17 @@ router.post('/send', function(req, res){
 	// required fields:  bball_date, email, firstname
 	
 	var template_id; 
+	var subject_text;
+	
 	if(req.body.type == 'add'){
 		template_id = "a37d3b93-d1c7-47ff-b16e-6ef4e7926d6d";
+		subject_text = "ThursBball Confirmation: you have been added for ";
+
 	} else {
 		template_id = "0bc29d35-d176-43a2-ae08-fa28aeb440e5";
+		subject_text = "ThursBball Confirmation: you have been removed for ";
 	}	
+
 	var sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
 	var request = sg.emptyRequest({
 	  method: 'POST',
@@ -78,7 +84,7 @@ router.post('/send', function(req, res){
 			email: "thursbballers@gmail.com", 
 			name: "ThursBball"
 		}, 
-	    subject: 'ThursBball Confirmation for ' + req.body.date,
+	    subject: subject_text + req.body.date,
 	    template_id: template_id
 	  }
 	});
