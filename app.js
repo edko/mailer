@@ -79,7 +79,8 @@ router.post('/send', function(req, res){
 	    				} else if (req.body.type == 'remove') {
 	    					return "0bc29d35-d176-43a2-ae08-fa28aeb440e5";
 	    				}
-	  	},
+	  				}
+	  	}
 	});
 
 	//With callback
