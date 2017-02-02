@@ -73,8 +73,13 @@ router.post('/send', function(req, res){
 			name: "ThursBball"
 		}, 
 	    subject: 'ThursBball Confirmation for ' + req.body.date,
-	    template_id: "a37d3b93-d1c7-47ff-b16e-6ef4e7926d6d",
-	  },
+	    template_id: function(){
+	    				if(req.body.type == 'add') {
+	    					return "a37d3b93-d1c7-47ff-b16e-6ef4e7926d6d";
+	    				} else if (req.body.type == 'remove') {
+	    					return "0bc29d35-d176-43a2-ae08-fa28aeb440e5";
+	    				}
+	  	},
 	});
 
 	//With callback
